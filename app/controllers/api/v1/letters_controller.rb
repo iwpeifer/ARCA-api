@@ -19,7 +19,7 @@ class Api::V1::LettersController < ApplicationController
   private
 
   def letter_params
-    params.require(:student).permit(:x, :y)
+    params.require(:letter).permit(:x, :y)
   end
 
 end

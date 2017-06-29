@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170627181954) do
+ActiveRecord::Schema.define(version: 20170629002703) do
 
   create_table "friendships", id: false, force: :cascade do |t|
     t.integer "user1_id"
@@ -28,6 +28,18 @@ ActiveRecord::Schema.define(version: 20170627181954) do
     t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "sender_id"
+    t.integer "recipient_id"
+    t.integer "item_id"
+    t.boolean "gift_received?"
+    t.boolean "friend_request?"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipient_id"], name: "index_notifications_on_recipient_id"
+    t.index ["sender_id"], name: "index_notifications_on_sender_id"
   end
 
   create_table "rooms", force: :cascade do |t|
