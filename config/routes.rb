@@ -5,6 +5,8 @@ Rails.application.routes.draw do
       resources :letters
       resources :rooms
       resources :friendships
+      post '/auth', to: 'auth#create'
+      get '/current_user', to: 'auth#show'
     end
   end
 end
