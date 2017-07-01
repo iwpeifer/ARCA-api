@@ -8,7 +8,7 @@ class Api::V1::AuthController < ApplicationController
       render json: {
         id: user.id,
         username: user.username,
-        friends: user.friends
+        friends: user.send_friends
       }
     else
       render json: {
