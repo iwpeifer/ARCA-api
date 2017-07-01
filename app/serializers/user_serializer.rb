@@ -1,6 +1,6 @@
 class UserSerializer < ActiveModel::Serializer
   attributes :id, :username
 
-  has_one :room, include_nested_associations: true
-
+  # has_one :room
+  has_many :users
 end

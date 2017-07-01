@@ -9,4 +9,11 @@ class User < ApplicationRecord
     :association_foreign_key => "user2_id")
   has_many :sent_notifications, :class_name => 'Notification', :foreign_key => 'sender_id'
   has_many :received_notifications, :class_name => 'Notification', :foreign_key => 'recipient_id'
+
+  def friends
+     self.users.map do |friend|
+       friend[:id]
+     end
+   end
+
 end

@@ -7,7 +7,8 @@ class Api::V1::AuthController < ApplicationController
     if user.present?
       render json: {
         id: user.id,
-        username: user.username
+        username: user.username,
+        friends: user.friends
       }
     else
       render json: {
@@ -21,7 +22,7 @@ class Api::V1::AuthController < ApplicationController
     if user.present? && user.authenticate(params[:password])
       render json: {
         id: user.id,
-        username: user.username,
+        username: user.username
       }
     else
       render json: {

@@ -1,4 +1,5 @@
 class RoomSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :letters
+
   has_many :letters
 end
