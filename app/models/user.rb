@@ -1,5 +1,9 @@
 class User < ApplicationRecord
   has_secure_password
+
+  after_create :create_corresponding_room
+  after_destroy :destroy_corresponding_room
+
   has_many :friendships
   has_many :friends, through: :friendships, dependent: :destroy
 
@@ -12,8 +16,17 @@ class User < ApplicationRecord
 
   def send_friends
      self.friends.map do |friend|
-       friend[:id]
+       {username: friend[:username], id: friend[:id]}
      end
+   end
+
+   def create_corresponding_room
+     Room.create(user_id: self.id)
+   end
+
+   def destroy_corresponding_room
+     room = Room.find_by(user_id: self.id)
+     room.destroy
    end
 
 end
