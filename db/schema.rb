@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(version: 20170629002703) do
     t.integer "sender_id"
     t.integer "recipient_id"
     t.integer "item_id"
-    t.boolean "gift_received?"
-    t.boolean "friend_request?"
+    t.boolean "is_gift"
+    t.boolean "is_friend_request"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["recipient_id"], name: "index_notifications_on_recipient_id"

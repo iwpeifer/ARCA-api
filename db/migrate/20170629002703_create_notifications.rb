@@ -4,8 +4,8 @@ class CreateNotifications < ActiveRecord::Migration[5.1]
       t.references :sender
       t.references :recipient
       t.integer :item_id
-      t.boolean :gift_received?
-      t.boolean :friend_request?
+      t.boolean :is_gift
+      t.boolean :is_friend_request
       t.timestamps
     end
   end
