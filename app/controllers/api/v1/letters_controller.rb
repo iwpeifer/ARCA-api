@@ -16,10 +16,21 @@ class Api::V1::LettersController < ApplicationController
     render json: letter
   end
 
+  def create
+    letter = Letter.create(letter_params)
+    render json: letter
+  end
+
+  def destroy
+    letter = Letter.find(params[:id])
+    letter.destroy
+    render json: letter
+  end
+
   private
 
   def letter_params
-    params.require(:letter).permit(:x, :y)
+    params.require(:letter).permit(:x, :y, :room_id, :color, :shape, :image_url, :content, :font_size, :font_family, :link_url)
   end
 
 end

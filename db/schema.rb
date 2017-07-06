@@ -25,6 +25,11 @@ ActiveRecord::Schema.define(version: 20170629002703) do
   create_table "letters", force: :cascade do |t|
     t.integer "room_id"
     t.string "item_type", default: "letter"
+    t.string "color", default: "green"
+    t.string "shape", default: "square"
+    t.integer "font_size", default: 12
+    t.string "font_family", default: "sans-serif"
+    t.string "link_url"
     t.integer "x"
     t.integer "y"
     t.string "content"

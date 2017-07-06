@@ -1,3 +1,3 @@
 class LetterSerializer < ActiveModel::Serializer
-  attributes :id, :item_type, :x, :y, :content, :image_url
+  attributes :id, :color, :shape, :item_type, :x, :y, :content, :image_url, :font_family, :font_size, :link_url
 end
