@@ -1,5 +1,6 @@
 class Api::V1::AuthController < ApplicationController
-# before_action :authorize_user!, only: [:show]
+
+  before_action :authorize_user!, only: [:show]
 
   def show
     id = request.headers['Authorization']
@@ -23,7 +24,8 @@ class Api::V1::AuthController < ApplicationController
       render json: {
         id: user.id,
         username: user.username,
-        friends: user.send_friends
+        friends: user.send_friends,
+        jwt: JWT.encode({user_id: 1}, ENV['JWT_SECRET'], ENV['JEW_ALGORITHM'])
       }
     else
       render json: {
