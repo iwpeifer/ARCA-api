@@ -27,4 +27,4 @@ User.create(username: 'Mike', password: "poop")
 User.create(username: 'Chris', password: "poop")
 User.create(username: 'Eric', password: "poop")
 
-Friendship.create(user_id: 1, friend_id: 2)
+Friendship.create(user_id: 1, friend_id: 2, status: 'accepted')

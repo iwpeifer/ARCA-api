@@ -27,10 +27,13 @@ class Api::V1::AuthController < ApplicationController
         friends: user.send_friends,
         jwt: JWT.encode({user_id: 1}, ENV['JWT_SECRET'], ENV['JWT_ALGORITHM'])
       }
-    else
+    elsif user.present? && !user.authenticate(params[:password])
       render json: {
         error: 'Username or password incorrect'
       }, status: 404
+    else
+      user = User.create({username: params[:username], password: params[:password]})
+      self.create
     end
   end
 end

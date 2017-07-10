@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170629002703) do
+ActiveRecord::Schema.define(version: 20170627181954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20170629002703) do
   create_table "friendships", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "friend_id"
+    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["friend_id"], name: "index_friendships_on_friend_id"
@@ -27,6 +28,7 @@ ActiveRecord::Schema.define(version: 20170629002703) do
 
   create_table "letters", force: :cascade do |t|
     t.integer "room_id"
+    t.string "originator"
     t.string "item_type", default: "letter"
     t.string "color", default: "green"
     t.string "shape", default: "square"
@@ -39,18 +41,6 @@ ActiveRecord::Schema.define(version: 20170629002703) do
     t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "notifications", force: :cascade do |t|
-    t.bigint "sender_id"
-    t.bigint "recipient_id"
-    t.integer "item_id"
-    t.boolean "is_gift"
-    t.boolean "is_friend_request"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["recipient_id"], name: "index_notifications_on_recipient_id"
-    t.index ["sender_id"], name: "index_notifications_on_sender_id"
   end
 
   create_table "rooms", force: :cascade do |t|

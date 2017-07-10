@@ -30,7 +30,7 @@ class Api::V1::LettersController < ApplicationController
   private
 
   def letter_params
-    params.require(:letter).permit(:x, :y, :room_id, :color, :shape, :image_url, :content, :font_size, :font_family, :link_url)
+    params.require(:letter).permit(:x, :y, :room_id, :color, :shape, :image_url, :content, :font_size, :font_family, :link_url, :originator)
   end
 
 end

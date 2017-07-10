@@ -2,11 +2,11 @@ class Friendship < ApplicationRecord
   belongs_to :user
   belongs_to :friend, class_name: "User"
 
-  after_create :create_inverse, unless: :has_inverse?
+  # after_create :create_inverse, unless: :has_inverse?
   after_destroy :destroy_inverse, if: :has_inverse?
 
   def inverse_friendship
-    { friend_id: user_id, user_id: friend_id }
+    { friend_id: user_id, user_id: friend_id, status: 'accepted' }
   end
 
   def inverses

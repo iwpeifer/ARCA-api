@@ -2,6 +2,7 @@ class CreateLetters < ActiveRecord::Migration[5.1]
   def change
     create_table :letters do |t|
       t.integer :room_id
+      t.string :originator
       t.string :item_type, :default => "letter"
       t.string :color, :default => "green"
       t.string :shape, :default => "square"
